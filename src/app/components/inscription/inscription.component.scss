@@ -1,0 +1,70 @@
+.inscripContainer {
+  margin: 20px;
+  position: relative;
+  .inscription {
+    width: 500px;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%);
+    background-color: var(--color1);
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    h2 {
+      font-size: 30px;
+      font-family: "Century Gothic", sans-serif;
+    }
+
+    .form {
+      margin-top: 30px;
+
+      input {
+        background-color: var(--color2);
+        border: 0px;
+        color: white;
+        height: 30px;
+        border-radius: 50px;
+        width: 50%;
+        text-align: center;
+        padding: 20px;
+        &:focus {
+          background-color: white;
+          color: var(--color1);
+          border: 0px;
+        }
+
+        &::placeholder {
+          color: white;
+          opacity: 50%;
+          text-align: center;
+        }
+
+        &:focus::placeholder {
+          color: var(--color1);
+          border: 0px;
+        }
+      }
+    } //form
+    a {
+      color: rgb(255, 255, 255);
+      font-weight: bold;
+    }
+
+    p {
+      opacity: 25%;
+      font-size: 15px;
+    }
+    input[type="submit"],
+    [type="reset"] {
+      color: var(--color1);
+      border-radius: 50px;
+      background-color: white;
+      cursor: pointer;
+      width: 25%;
+      height: 30px;
+      border: 0px;
+      margin: 30px;
+    }
+  }
+}

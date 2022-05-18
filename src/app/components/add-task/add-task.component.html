@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>Tache</h2>
+<mat-dialog-content class="mat-typography">
+  <form class="task-form" #addForm="ngForm" (ngSubmit)="onAddTask(addForm)">
+    <mat-form-field class="task-full-width" appearance="fill">
+      <mat-label>Nom de la tache</mat-label>
+      <input
+        matInput
+        placeholder="Ex. votre tache"
+        ngModel
+        required
+        id="taskName"
+        name="taskName"
+      />
+    </mat-form-field>
+    <mat-form-field
+      appearance="fill"
+      class="task-full-width"
+      ngModelGroup="project"
+    >
+      <mat-label>Selectionner son projet</mat-label>
+      <mat-select ngModel required name="idProject">
+        <mat-option
+          *ngFor="let project of projects"
+          [value]="project.idProject"
+        >
+          {{ project.idProject }} - {{ project.projectName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Annuler</button>
+      <button
+        mat-button
+        btn-primary
+        cdkFocusInitial
+        [disabled]="addForm.invalid"
+        class="btn-primary text-white"
+      >
+        Valider
+      </button>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>

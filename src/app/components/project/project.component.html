@@ -1,0 +1,67 @@
+<div class="container mt-2">
+  <h2 class="hstack gap-2">
+    <span class=""> LES PROJETS </span>
+    <button mat-button (click)="openDialog()" class="btn btn-primary ms-auto">
+      Créer un projet
+    </button>
+    <input
+      class="form-control me-2 w-25"
+      type="search"
+      placeholder="Rechercher..."
+      aria-label="Search"
+      #key="ngModel"
+      ngModel
+      (ngModelChange)="searchProjects(key.value)"
+    />
+  </h2>
+</div>
+<div class="container" id="main-container">
+  <div class="row">
+    <div *ngFor="let project of projects" class="col-md-12 col-xl-6">
+      <div class="card m-2 text-primary" style="width: 100%">
+        <div class="card-body">
+          <div class="action">
+            <button mat-button (click)="openEditDialog(project.idProject)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button
+              id="deleteButton"
+              mat-button
+              (click)="onDelete(project.idProject)"
+              class="text-danger"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+          <h3 class="card-title">
+            <img
+              src="../../../assets/img/project.png"
+              class="card-img-top-right"
+              alt="..."
+            />
+            <span class="fs-1"
+              >{{ project.idProject }} <br />{{ project.projectName }}</span
+            >
+          </h3>
+          <div class="card-text fs-6">
+            <span class="fw-bold">De la compagnie : </span
+            >{{ project.companyId }}
+            <br />
+            <br />
+            <div class="fw-bold fs-5 text-center">LES TACHES A FAIRE :</div>
+            <br />
+
+            <div class="row">
+              <div
+                class="col-md-12 col-xl-6"
+                *ngFor="let item of project.tasks"
+              >
+                <mat-icon></mat-icon> - {{ item.taskName }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

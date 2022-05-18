@@ -1,0 +1,90 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+  background-color: var(--color1);
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+  color: white;
+  font-family: inherit;
+}
+mat-nav-list {
+  a {
+    color: white;
+    padding-bottom: 50px;
+  }
+}
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+mat-toolbar {
+  background-color: var(--color1);
+  color: white;
+}
+
+.mat-icon {
+  vertical-align: center;
+  margin-right: 1rem;
+}
+
+.mat-list-item {
+  color: white;
+  font-size: 0.8rem;
+  height: 44px !important;
+  margin-bottom: 15px;
+  ::ng-deep {
+    .mat-list-item-content {
+      &:hover {
+        background-color: var(--color3);
+      }
+    }
+  }
+}
+
+.list-item-active {
+  color: white;
+  ::ng-deep {
+    .mat-list-item-content {
+      background-color: var(--color2) !important;
+      &:hover {
+        background: var(--color2) !important;
+      }
+    }
+  }
+}
+
+mat-divider {
+  background-color: white;
+}
+ul {
+  li {
+    list-style: none;
+  }
+}
+
+button {
+  border: 0;
+  outline: none;
+  background: transparent;
+}
+
+.user {
+  margin: 10px;
+  position: absolute;
+  font-size: 14px;
+  top: 0;
+  right: 0;
+}
+
+.mat-menu-item {
+  color: var(--color1);
+  mat-icon {
+    color: var(--color1);
+  }
+}

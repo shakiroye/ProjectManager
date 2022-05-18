@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>Projet</h2>
+<mat-dialog-content class="mat-typography">
+  <form
+    class="project-form"
+    #addForm="ngForm"
+    (ngSubmit)="onAddProject(addForm)"
+  >
+    <mat-form-field class="project-full-width" appearance="fill">
+      <mat-label>Nom du projet</mat-label>
+      <input
+        matInput
+        placeholder="Ex. votre projet"
+        ngModel
+        required
+        id="projectName"
+        name="projectName"
+      />
+    </mat-form-field>
+    <mat-form-field
+      appearance="fill"
+      class="project-full-width"
+      ngModelGroup="company"
+    >
+      <mat-label>Selectionner sa compagnie</mat-label>
+      <mat-select ngModel required name="idCompany">
+        <mat-option
+          *ngFor="let company of companies"
+          [value]="company.idCompany"
+        >
+          {{ company.idCompany }} - {{ company.companyName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Annuler</button>
+      <button
+        mat-button
+        btn-primary
+        cdkFocusInitial
+        [disabled]="addForm.invalid"
+        class="btn-primary text-white"
+      >
+        Valider
+      </button>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>

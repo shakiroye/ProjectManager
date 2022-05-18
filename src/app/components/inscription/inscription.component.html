@@ -1,0 +1,78 @@
+<div class="inscripContainer">
+  <div class="inscription">
+    <h2>AJOUTER UN UTILISATEUR</h2>
+    <form #addForm="ngForm" [formGroup]="form" (ngSubmit)="addUser()">
+      <div class="form firstName">
+        <input
+          type="text"
+          name="firstName"
+          id="firstName"
+          placeholder="Prenom(s)"
+          [(ngModel)]="user.firstName"
+          required
+          formControlName="firstName"
+        />
+      </div>
+      <div class="form lastName">
+        <input
+          type="text"
+          name="lastName"
+          id="lastName"
+          placeholder="Nom"
+          [(ngModel)]="user.lastName"
+          required
+          formControlName="lastName"
+        />
+      </div>
+      <div class="form username">
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Nom d'utilisateur"
+          [(ngModel)]="user.username"
+          required
+          formControlName="username"
+        />
+      </div>
+      <div class="form email">
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Email"
+          [(ngModel)]="user.email"
+          required
+          formControlName="email"
+        />
+      </div>
+      <!--
+
+        <div class="form adminRole">
+          <input
+          type="text"
+          name="adminRole"
+          id="adminRole"
+          placeholder="Role de l'admin"
+          [(ngModel)]="user.adminRole"
+          [disabled]="true"
+          formControlName="adminRole"
+          />
+        </div>
+      -->
+      <div class="form password">
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Mot de passe"
+          [(ngModel)]="user.password"
+          required
+          formControlName="password"
+        />
+      </div>
+      <input type="reset" value="ANNULER" />
+      <input type="submit" value="INSCRIPTION" />
+    </form>
+  </div>
+</div>

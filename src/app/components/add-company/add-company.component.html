@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Compagnie</h2>
+<mat-dialog-content class="mat-typography">
+  <form
+    class="company-form"
+    #addForm="ngForm"
+    (ngSubmit)="onAddCompany(addForm)"
+  >
+    <mat-form-field class="company-full-width" appearance="fill">
+      <mat-label>Nom de la compagnie</mat-label>
+      <input
+        matInput
+        placeholder="Ex. votre compagnie"
+        ngModel
+        required
+        id="companyName"
+        name="companyName"
+      />
+    </mat-form-field>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Annuler</button>
+      <button
+        mat-button
+        btn-primary
+        cdkFocusInitial
+        [disabled]="addForm.invalid"
+        class="btn-primary text-white"
+      >
+        Valider
+      </button>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>

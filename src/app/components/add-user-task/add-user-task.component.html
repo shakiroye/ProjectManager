@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>Assigner un utilisateur</h2>
+<mat-dialog-content class="mat-typography">
+  <form
+    class="user-task-form"
+    #addForm="ngForm"
+    (ngSubmit)="onAddUserTask(addForm)"
+  >
+    <mat-form-field
+      appearance="fill"
+      class="user-full-width"
+      ngModelGroup="user"
+    >
+      <mat-label>Selectionner l'utilisateur</mat-label>
+      <mat-select [(ngModel)]="selectedValue" name="username">
+        <mat-option *ngFor="let user of users" [value]="user.username">
+          {{ user.username }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Annuler</button>
+      <button
+        mat-button
+        btn-primary
+        cdkFocusInitial
+        [disabled]="addForm.invalid"
+        class="btn-primary text-white"
+      >
+        Valider
+      </button>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>

@@ -1,0 +1,68 @@
+<div class="container mt-2">
+  <h2 class="hstack gap-2">
+    <span> LES COMPAGNIES </span>
+    <button
+      mat-button
+      (click)="openAddDialog()"
+      class="btn btn-primary ms-auto"
+    >
+      Créer une compagnie
+    </button>
+    <input
+      class="form-control me-2 w-25"
+      type="search"
+      placeholder="Rechercher..."
+      aria-label="Search"
+      #key="ngModel"
+      ngModel
+      (ngModelChange)="searchCompanies(key.value)"
+    />
+  </h2>
+</div>
+<div class="container" id="main-container">
+  <div class="row">
+    <div *ngFor="let company of companies" class="col-md-12 col-xl-6">
+      <div class="card m-2 text-primary" style="width: 100%">
+        <div class="card-body">
+          <div class="action">
+            <button mat-button (click)="openEditDialog(company.idCompany)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button
+              mat-button
+              (click)="onDelete(company.idCompany)"
+              class="text-danger"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+          <h3 class="card-title">
+            <img
+              src="../../../assets/img/company.png"
+              class="card-img-top-right"
+              alt="..."
+            />
+            <span class="fs-1">
+              {{ company.idCompany }} <br />{{ company.companyName }}
+            </span>
+          </h3>
+          <div class="card-text fs-6">
+            <div class="fw-bold fs-5 text-center">
+              <br />
+              LES PROJETS DE LA COMPAGNIE :
+            </div>
+            <br />
+            <div class="row">
+              <div
+                class="col-md-12 col-xl-6"
+                *ngFor="let item of company.projects"
+              >
+                <mat-icon></mat-icon> - {{ item.projectName }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

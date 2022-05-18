@@ -1,0 +1,39 @@
+<div class="loginContainer">
+  <div class="login">
+    <h2>LOGIN</h2>
+    <form (ngSubmit)="login(loginForm)" #loginForm="ngForm">
+      <div class="form username">
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Entrez votre nom d'utilisateur"
+          ngModel
+          required
+        />
+      </div>
+      <div class="form password">
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Entrez votre mot de passe"
+          ngModel
+          required
+        />
+      </div>
+      <input type="submit" value="CONNEXION" />
+
+      <div class="alert alert-danger" role="alert" *ngIf="isFormValid">
+        Veuillez remplir les champs
+      </div>
+      <div
+        class="alert alert-danger"
+        role="alert"
+        *ngIf="areCredentialsInvalid"
+      >
+        Nom d'utilisateur ou mot de passe invalide
+      </div>
+    </form>
+  </div>
+</div>

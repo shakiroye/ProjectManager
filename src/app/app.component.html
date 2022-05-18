@@ -1,0 +1,9 @@
+<app-sidebar
+  *ngIf="authService.isAuthenticated && authService.isAdmin"
+></app-sidebar>
+<app-task-log
+  *ngIf="authService.isAuthenticated && !authService.isAdmin"
+></app-task-log>
+<div *ngIf="!authService.isAuthenticated">
+  <app-login></app-login>
+</div>

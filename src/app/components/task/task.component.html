@@ -1,0 +1,168 @@
+<div class="container mt-2">
+  <h2 class="hstack gap-2">
+    <span class=""> LES TACHES </span>
+    <button mat-button (click)="openDialog()" class="btn btn-primary ms-auto">
+      Créer une tache
+    </button>
+    <input
+      class="form-control me-2 w-25"
+      type="search"
+      placeholder="Rechercher..."
+      aria-label="Search"
+      #key="ngModel"
+      ngModel
+      (ngModelChange)="searchTasks(key.value)"
+    />
+  </h2>
+</div>
+<div class="container" id="main-container">
+  <div class="row">
+    <div
+      *ngFor="let task of tasks"
+      selectedValue="task"
+      class="col-md-12 col-xl-6"
+    >
+      <div class="card m-2 text-primary" style="width: 100%">
+        <div class="card-body">
+          <div class="action">
+            <button mat-button (click)="onEdit(task.idTask)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button
+              mat-button
+              (click)="onDelete(task.idTask)"
+              class="text-danger"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+          <h3 class="card-title">
+            <img
+              src="../../../assets/img/task.png"
+              class="card-img-top-right"
+              alt="..."
+            /><span class="fs-1"
+              >{{ task.idTask }} <br />{{ task.taskName }}</span
+            >
+          </h3>
+          <ng-container *ngIf="task.taskLogs.length === 0; else elseTemplate">
+            <cdk-accordion class="example-accordion">
+              <cdk-accordion-item
+                #accordionItem="cdkAccordionItem"
+                class="example-accordion-item"
+                role="button"
+                tabindex="0"
+              >
+                <div
+                  class="example-accordion-item-header btn btn-primary"
+                  (click)="accordionItem.toggle()"
+                >
+                  <span class="example-accordion-item-description">
+                    Assigner la tache
+                  </span>
+                </div>
+                <div
+                  class="example-accordion-item-body"
+                  role="region"
+                  [style.display]="accordionItem.expanded ? '' : 'none'"
+                >
+                  <form
+                    class="user-task-form"
+                    #addForm="ngForm"
+                    [formGroup]="addFormGroup"
+                    (ngSubmit)="onAddUserTask(task.idTask)"
+                  >
+                    <mat-form-field class="task-full-width" appearance="fill">
+                      <mat-label>Description</mat-label>
+                      <input
+                        matInput
+                        placeholder="Ex. Description"
+                        formControlName="taskDescription"
+                        required
+                        id="taskDescription"
+                      />
+                    </mat-form-field>
+                    <mat-form-field class="task-full-width" appearance="fill">
+                      <mat-label>Date</mat-label>
+                      <input
+                        type="date"
+                        matInput
+                        formControlName="taskLogDate"
+                        required
+                        id="taskLogDate"
+                      />
+                    </mat-form-field>
+                    <mat-form-field class="task-full-width" appearance="fill">
+                      <mat-label>Minutes</mat-label>
+                      <input
+                        matInput
+                        placeholder="Ex. 10"
+                        formControlName="taskMinutes"
+                        required
+                        id="taskMinutes"
+                      />
+                    </mat-form-field>
+                    <mat-form-field
+                      appearance="fill"
+                      class="task-full-width"
+                      formGroupName="user"
+                    >
+                      <mat-label>Selectionner l'utilisateur</mat-label>
+                      <mat-select formControlName="username" required>
+                        <mat-option
+                          *ngFor="let user of users"
+                          [value]="user.username"
+                        >
+                          {{ user.username }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <mat-form-field
+                      class="task-full-width"
+                      appearance="fill"
+                      formGroupName="task"
+                      [style.display]="'none'"
+                    >
+                      <mat-label>Id Task</mat-label>
+                      <input matInput id="idTask" formControlName="idTask" />
+                    </mat-form-field>
+                    <input
+                      mat-button
+                      type="submit"
+                      value="Assigner"
+                      class="btn btn-primary"
+                      [disabled]="addFormGroup.invalid"
+                    />
+                  </form>
+                </div>
+              </cdk-accordion-item>
+            </cdk-accordion>
+          </ng-container>
+          <ng-template #elseTemplate>
+            <div class="card-text fs-6">
+              <div class="fw-bold fs-5 text-center">
+                <br />
+                LES DETAILS DE LA TACHE :
+              </div>
+              <br />
+              <div class="row">
+                <div class="col" *ngFor="let item of task.taskLogs">
+                  <span class="fw-bold">Description:</span>
+                  {{ item.taskDescription }} <br />
+                  <span class="fw-bold">Date:</span>
+                  {{ item.taskLogDate }} <br />
+                  <span class="fw-bold">Nombre de minutes:</span>
+                  {{ item.taskMinutes }} <br />
+                  <span class="fw-bold">Personne assignée:</span>
+                  {{ item.username }} <br />
+                  <span class="fw-bold">Du projet :</span>
+                  {{ task.projectName }}
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

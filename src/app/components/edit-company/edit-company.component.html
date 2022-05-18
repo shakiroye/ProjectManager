@@ -1,0 +1,37 @@
+<form class="company-form" #updateForm="ngForm" (ngSubmit)="onEdit(updateForm)">
+  <mat-form-field
+    class="company-full-width"
+    appearance="fill"
+    [style.display]="'none'"
+  >
+    <input
+      matInput
+      [(ngModel)]="companyToEdit.idCompany"
+      id="idCompany"
+      name="idCompany"
+    />
+  </mat-form-field>
+  <mat-form-field class="company-full-width" appearance="fill">
+    <mat-label>Nom de la compagnie</mat-label>
+    <input
+      matInput
+      placeholder="Ex. votre compagnie"
+      [(ngModel)]="companyToEdit.companyName"
+      required
+      id="companyName"
+      name="companyName"
+    />
+  </mat-form-field>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Annuler</button>
+    <button
+      mat-button
+      btn-primary
+      cdkFocusInitial
+      [disabled]="updateForm.invalid"
+      class="btn-primary text-white"
+    >
+      Valider
+    </button>
+  </mat-dialog-actions>
+</form>

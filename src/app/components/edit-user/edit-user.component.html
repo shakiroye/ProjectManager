@@ -1,0 +1,79 @@
+<form class="user-form" #updateForm="ngForm" (ngSubmit)="onEdit(updateForm)">
+  <mat-form-field class="user-full-width" appearance="fill">
+    <mat-label>Prenoms</mat-label>
+    <input
+      type="text"
+      name="firstName"
+      id="firstName"
+      placeholder="Prenom(s)"
+      [(ngModel)]="user.firstName"
+      required
+      matInput
+    />
+  </mat-form-field>
+  <mat-form-field class="user-full-width" appearance="fill">
+    <mat-label>Nom</mat-label>
+    <input
+      type="text"
+      name="lastName"
+      id="lastName"
+      placeholder="Nom"
+      [(ngModel)]="user.lastName"
+      required
+      matInput
+    />
+  </mat-form-field>
+  <mat-form-field class="user-full-width" appearance="fill">
+    <mat-label>Nom d'utilisateur</mat-label>
+    <input
+      type="text"
+      name="username"
+      id="username"
+      placeholder="Nom d'utilisateur"
+      [(ngModel)]="user.username"
+      required
+      matInput
+    />
+  </mat-form-field>
+  <mat-form-field
+    class="user-full-width"
+    appearance="fill"
+    [style.display]="'none'"
+  >
+    <mat-label>Email</mat-label>
+    <input
+      type="email"
+      name="email"
+      id="email"
+      placeholder="Email"
+      [(ngModel)]="user.email"
+      required
+      matInput
+    />
+  </mat-form-field>
+  <mat-form-field class="user-full-width" appearance="fill">
+    <mat-label>Mot de passe</mat-label>
+    <input
+      type="password"
+      name="password"
+      id="password"
+      placeholder="Mot de passe"
+      [(ngModel)]="user.password"
+      required
+      matInput
+    />
+  </mat-form-field>
+
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Annuler</button>
+    <button
+      mat-button
+      btn-primary
+      cdkFocusInitial
+      [disabled]="updateForm.invalid"
+      class="btn-primary text-white"
+    >
+      Valider
+    </button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,53 @@
+<div class="container mt-2">
+  <h2 class="hstack gap-2">
+    <span class=""> LES UTILISATEURS </span>
+    <button mat-button (click)="openDialog()" class="btn btn-primary ms-auto">
+      Ajouter un utilisateur
+    </button>
+    <input
+      class="form-control me-2 w-25"
+      type="search"
+      placeholder="Rechercher..."
+      aria-label="Search"
+      #key="ngModel"
+      ngModel
+      (ngModelChange)="searchUsers(key.value)"
+    />
+  </h2>
+</div>
+<div class="container" id="main-container">
+  <div class="row">
+    <div *ngFor="let user of users" class="col-md-6 col-xl-4">
+      <div class="card m-2 text-primary" style="width: 100%">
+        <div class="card-body">
+          <div class="action">
+            <button mat-button (click)="openEditDialog(user.username)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button
+              mat-button
+              (click)="onDelete(user.username)"
+              class="text-danger"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+          <h3 class="card-title">
+            <img
+              src="../../../assets/img/user.png"
+              class="card-img-top-right"
+              alt="..."
+            />
+            <span class="fs-1">{{ user.username }} <br /></span>
+            <span class="fs-5"
+              >Prenoms : {{ user.firstName }} <br />
+              Nom : {{ user.lastName }} <br />
+              Email : {{ user.email }} <br />
+            </span>
+          </h3>
+          <p class="card-text fs-6"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
