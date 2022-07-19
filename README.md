@@ -1,6 +1,7 @@
 
 
 # Project Manager
+Le backend se trouve sur la branche main et le frontend sur une autre branche
 
 ## Auteurs
 
